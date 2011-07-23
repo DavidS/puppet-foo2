@@ -1,0 +1,49 @@
+Puppet module: foo2
+
+# An open work in progress to define a new foo template for Puppet modules
+
+USAGE:
+include foo              # Install and run foo 
+include foo::disable     # Disable foo service.
+include foo::disableboot # Disable foo service at boot time, but don't stop if is running.
+include foo::absent      # Remove foo package.
+include foo::debug       # Used for debugging purposes (not resource hungry)
+                         # Automatically included if $debug=yes
+                         # Requires Example42's puppet::params and puppet::debug
+
+# Extended Classes
+include foo::puppi       # Puppi extensions for the foo module
+                         # Requires Example42's puppi module
+include foo::monitor     # Monitor foo
+                         # Automatically included if $monitor=yes
+                         # Requires Example42's monitor module
+include foo::firewall    # Manages firewall rules for foo service
+                         # Automatically included if $firewall=yes
+                         # Requires Example42's firewall module
+
+
+VARIABLES FOR EXTENDED MODULES:
+$puppi - Set to "yes" to enable foo plugins for puppi
+Check foo/manifests/puppi.pp for more info.
+
+$monitor - Set to "yes" to enable auto monitoring classes 
+$monitor_tool - Defines the monitor tools to activate (At leat one, can be an array)
+Check foo/manifests/monitor.pp for more info on foo monitoring related variables.
+
+$firewall - Set to "yes" to enable auto firewalling classes
+$firewall_tool - Defines the firewall tools to activate
+Check foo/manifests/firewall.pp for more info on foo firewalling related variables.
+
+
+OPERATING SYSTEMS SUPPORT (Planned, Development, Testing, Production):
+RedHat/Centos 5 : Development
+RedHat/Centos 6 : Testing
+Debian 5        : Development
+Debian 6        : Development
+Ubuntu 8.04     : Development
+Ubuntu 10.04    : Testing
+Ubuntu 11.04    : Testing
+SLES 10         : Planned
+SLES 11         : Planned
+Solaris 10      : Planned
+Fedora          : Planned
